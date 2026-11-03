@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USMP Club - Crear cuenta</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="pagina-login">
+
+    <div class="contenedor-login">
+        <div class="tarjeta-login">
+
+            <div class="encabezado-login">
+                <h2>USMP CLUB</h2>
+                <p>¡Forma parte de nuestra comunidad!</p>
+            </div>
+
+            <h3 class="titulo-registro">Crear una cuenta</h3>
+            <p class="descripcion-registro">
+                Regístrate y descubre los clubes y actividades de la USMP.
+            </p>
+
+            <form id="formularioRegistro">
+
+                <div class="campo-login">
+                    <label for="nombreRegistro">Nombre completo</label>
+                    <input type="text" id="nombreRegistro"
+                           placeholder="Ingresa tu nombre" required>
+                </div>
+
+                <div class="campo-login">
+                    <label for="correoRegistro">Correo institucional</label>
+                    <input type="email" id="correoRegistro"
+                           placeholder="ejemplo@usmp.pe" required>
+                </div>
+
+                <div class="campo-login">
+                    <label for="facultadRegistro">Facultad</label>
+                    <select id="facultadRegistro" required>
+                        <option value="">Selecciona tu facultad</option>
+                        <option>Ingenieria Industrial</option>
+                        <option>Ingenieria Civil</option>
+                        <option>Ingenieria de sistemas y computacion</option>
+                        <option>Ingenieria Aeronautica</option>
+                        <option>Arquitectura</option>
+                        <option>Otra</option>
+                    </select>
+                </div>
+
+                <div class="campo-login">
+                    <label for="passwordRegistro">Contraseña</label>
+                    <input type="password" id="passwordRegistro"
+                           placeholder="Crea una contraseña" required minlength="6">
+                </div>
+
+                <div class="campo-login">
+                    <label for="confirmarPassword">Confirmar contraseña</label>
+                    <input type="password" id="confirmarPassword"
+                           placeholder="Repite tu contraseña" required>
+                </div>
+
+                <button type="submit" class="boton-login">
+                    Crear cuenta
+                </button>
+
+                <p id="mensajeRegistro" class="mensaje-registro"></p>
+
+            </form>
+
+            <p class="texto-registro">
+                ¿Ya tienes una cuenta?
+                <a href="iniciar-sesion.html">Inicia sesión</a>
+            </p>
+
+            <a href="index.html" class="enlace-inicio">
+                Volver al inicio
+            </a>
+
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("formularioRegistro").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const nombre = document.getElementById("nombreRegistro").value.trim();
+            const correo = document.getElementById("correoRegistro").value.trim();
+            const facultad = document.getElementById("facultadRegistro").value;
+            const password = document.getElementById("passwordRegistro").value;
+            const confirmar = document.getElementById("confirmarPassword").value;
+            const mensaje = document.getElementById("mensajeRegistro");
+
+            if (!correo.toLowerCase().endsWith("@usmp.pe")) {
+                mensaje.textContent = "Debes utilizar un correo institucional @usmp.pe.";
+                return;
+            }
+
+            if (password !== confirmar) {
+                mensaje.textContent = "Las contraseñas no coinciden.";
+                return;
+            }
+
+            if (localStorage.getItem("cuenta_correo")) {
+                mensaje.textContent = "Ya existe una cuenta registrada en este navegador.";
+                return;
+            }
+
+            localStorage.setItem("cuenta_nombre", nombre);
+            localStorage.setItem("cuenta_correo", correo);
+            localStorage.setItem("cuenta_facultad", facultad);
+            localStorage.setItem("cuenta_password", password);
+
+            mensaje.textContent = "¡Cuenta creada! Ahora puedes iniciar sesión.";
+
+            document.getElementById("formularioRegistro").reset();
+        });
+    </script>
+
+</body>
+<footer class="pie-pagina">
+
+    <div class="contenido-pie">
+
+        <div class="seccion-pie">
+            <h4>USMP CLUB</h4>
+            <p>
+                Un espacio para descubrir, participar
+                y conectar con los clubes y actividades
+                universitarias.
+            </p>
+        </div>
+
+        <div class="seccion-pie">
+            <h4>Enlaces rápidos</h4>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="clubes.html">Clubes</a></li>
+                <li><a href="eventos.html">Eventos</a></li>
+                <li><a href="miperfil1.html">Mi perfil</a></li>
+            </ul>
+        </div>
+
+        <div class="seccion-pie">
+            <h4>Comunidad</h4>
+            <p>
+                Explora tus intereses, conoce nuevos
+                compañeros y participa en las actividades
+                de USMP Club.
+            </p>
+        </div>
+
+    </div>
+
+    <div class="derechos-pie">
+        © 2026 USMP Club. Proyecto académico.
+        Todos los derechos reservados.
+    </div>
+
+</footer>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USMP CLUB - Inicio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.2/themes/base/jquery-ui.css">
+</head>
+<body>
+    <nav class="d-flex justify-content-between align-items-center p-3">
+
+    <div class="d-flex align-items-center">
+        <img src="Imagenes/LOGOUSMOP.webp" alt="Logo UniClub" width="100" class="me-2">
+        <h4 class="mb-0">Usmp Club</h4>
+    </div>
+    <ul class="nav justify-content-end">
+
+            <li class="nav-item">
+                <a class="nav-link active" href="index.html">Inicio</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="clubes.html">Clubes</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="eventos.html">Eventos</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="miperfil1.html">Mi perfil</a>
+            </li>
+
+        </ul>
+    </nav>
+
+    <h1>Bienvenido a Usmp Club</h1>
+    <p>Encuentra clubes, conoce personas y participa en actividades</p>
+    
+    <nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+        <form class="d-flex" role="search" onsubmit="return false;">
+
+            <input
+                class="form-control me-2"
+                type="search"
+                id="tags"
+                placeholder="Buscar clubes"
+                aria-label="Buscar clubes"
+                autocomplete="off"
+            >
+
+            <button class="btn btn-outline-success" type="button">Buscar</button>
+           </form>
+          </div>
+        </nav>
+
+    <h4>Clubes Destacados</h4>
+    <div class="card" style="width: 18rem;">
+      <img src="Imagenes/fut.jpg" class="card-img-top" alt="Fútbol">
+      <div class="card-body">
+        <p class="card-text">Club de Fútbol</p> <p>156 miembros</p>
+      </div>
+    </div>
+    
+    <div class="card" style="width: 18rem;">
+      <img src="Imagenes/voley.jpg" class="card-img-top" alt="Vóley">
+      <div class="card-body">
+        <p class="card-text">Club de Vóley</p><p>118 miembros</p>
+      </div>
+    </div>
+    
+    <div class="card" style="width: 18rem;">
+      <img src="Imagenes/oratoria.webp" class="card-img-top" alt="Oratoria">
+      <div class="card-body">
+        <p class="card-text">Club de Oratoria</p><p>95 miembros</p>
+      </div>
+    </div>
+
+    <div class="boton-clubes">
+        <a href="clubes.html" class="btn btn-primary">Ver todos los clubes</a>
+    </div>
+
+    <section class="seccion-proximos-eventos">
+
+        <h2>Próximos eventos</h2>
+        <p class="descripcion-eventos">
+            ¡Entérate de las próximas actividades de nuestros clubes!
+        </p>
+        
+        <div class="contenedor-eventos">
+
+            <div class="panel-evento">
+                <span class="icono-panel">⚽</span>
+                <h3>Vive el deporte</h3>
+                <p>Participa, comparte y demuestra tu talento en nuestras actividades deportivas.</p>
+                <span class="decoracion-panel">USMP</span>
+            </div>
+            
+            <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-inner">
+
+                <div class="carousel-item active">
+                  <img src="Imagenes/eventofut.jpg" class="d-block w-100" alt="Próximo partido de fútbol">
+                </div>
+
+                <div class="carousel-item">
+                  <img src="Imagenes/eventovoley.jpg" class="d-block w-100" alt="Próximo partido de vóley">
+                </div>
+
+                <div class="carousel-item">
+                  <img src="Imagenes/oratoria.webp" class="d-block w-100" alt="Junta del club de oratoria">
+                </div>
+
+              </div>
+
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+
+            <div class="panel-evento">
+                <span class="icono-panel">🎤</span>
+                <h3>Descubre tu talento</h3>
+                <p>Encuentra nuevas experiencias, aprende y forma parte de nuestros clubes.</p>
+                <span class="decoracion-panel">¡ÚNETE!</span>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.14.2/jquery-ui.js"></script>
+    <script>
+$(document).ready(function() {
+
+    var clubes = [
+        { label: "Club de Fútbol", url: "futbol.html" },
+        { label: "Club de Vóley", url: "voley.html" },
+        { label: "Club de Oratoria", url: "oratoria.html" },
+        { label: "Club de Robótica", url: "robotica.html" },
+        { label: "Club de Matemática", url: "matematica.html" },
+        { label: "Club de Teatro", url: "teatro.html" },
+        { label: "Club de Lectura", url: "lectura.html" },
+        { label: "Club de Programacion", url: "programacion.html" },
+        { label: "Club de Ajedrez", url: "ajedrez.html" }
+    ];
+
+    $("#tags").autocomplete({
+        source: clubes,
+        minLength: 1,
+        select: function(event, ui) {
+            window.location.href = ui.item.url;
+        }
+    });
+
+});
+</script>
+<footer class="pie-pagina">
+
+    <div class="contenido-pie">
+
+        <div class="seccion-pie">
+            <h4>USMP CLUB</h4>
+            <p>
+                Un espacio para descubrir, participar
+                y conectar con los clubes y actividades
+                universitarias.
+            </p>
+        </div>
+
+        <div class="seccion-pie">
+            <h4>Enlaces rápidos</h4>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="clubes.html">Clubes</a></li>
+                <li><a href="eventos.html">Eventos</a></li>
+                <li><a href="miperfil1.html">Mi perfil</a></li>
+            </ul>
+        </div>
+
+        <div class="seccion-pie">
+            <h4>Comunidad</h4>
+            <p>
+                Explora tus intereses, conoce nuevos
+                compañeros y participa en las actividades
+                de USMP Club.
+            </p>
+        </div>
+
+    </div>
+
+    <div class="derechos-pie">
+        © 2026 USMP Club. Proyecto académico.
+        Todos los derechos reservados.
+    </div>
+
+</footer>
+ </body>
+</html>

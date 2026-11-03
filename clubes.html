@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>USMP CLUB</title>
+     <link rel="stylesheet" href="style.css">
+</head>
+ 
+<body>
+  <header style="display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; border-bottom: 2px solid #eaeaea; background-color: #ffffff;">
+    
+    <div style="display: flex; align-items: center; gap: 12px;">
+        <img src="Imagenes/LOGOUSMOP.webp" alt="Logo USMP" style="width: 45px; height: 45px; object-fit: contain;">
+        <span style="font-size: 22px; font-weight: 500; color: #333;">Usmp Club</span>
+    </div>
+
+    <nav>
+        <ul class="nav justify-content-end" style="display: flex; list-style: none; margin: 0; padding: 0; gap: 25px;">
+            <li class="nav-item">
+                <a class="nav-link" href="index.html" style="color: #495057; text-decoration: none;">Inicio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="clubes.html" style="color: #495057; text-decoration: none; font-weight: bold;">Clubes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="eventos.html" style="color: #495057; text-decoration: none;">Eventos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="miperfil1.html" style="color: #495057; text-decoration: none;">Mi perfil</a>
+            </li>
+        </ul>
+    </nav>
+  </header>
+
+ <div class="Buscador">
+    <input type="text" id="inputBuscador" placeholder="Buscar clubes..." oninput="filtrarCombinado()">
+ </div>
+
+ <div class="Contenedor-principal">
+
+ <aside>
+    <h2>Categorías</h2>
+    <ul id="listaCategorias">
+     <li><h3><a href="#" onclick="seleccionarCategoria('todos', event)" style="color: #b3001b;">Todos</a></h3></li>
+     <li><h3><a href="#" onclick="seleccionarCategoria('Deportes', event)" style="color: #555;">Deportes</a></h3></li>
+     <li><h3><a href="#" onclick="seleccionarCategoria('Academicos', event)" style="color: #555;">Académicos</a></h3></li>
+     <li><h3><a href="#" onclick="seleccionarCategoria('Tecnologia', event)" style="color: #555;">Tecnología</a></h3></li>
+     <li><h3><a href="#" onclick="seleccionarCategoria('Cultura', event)" style="color: #555;">Cultura</a></h3></li>
+    </ul>
+ </aside>
+
+ <section>
+    <h2>Todos los clubes</h2>
+
+    <article class="tarjeta" data-categoria="Deportes">
+        <img src="Imagenes/fut.jpg" alt="Club de fútbol">
+        <h3>Club de fútbol</h3>
+        <a href="futbol.html"><button>Ver</button></a>
+    </article>
+
+    <article class="tarjeta" data-categoria="Deportes">
+        <img src="Imagenes\voley.jpg" alt="Club de vóley">
+        <h3>Club de vóley</h3>
+        <a href="voley.html"><button>Ver</button></a>
+    </article>
+    
+    <article class="tarjeta" data-categoria="Academicos">
+        <img src="Imagenes/Imagen matematica.jpg" alt="Club de matemáticas">
+        <h3>Club de matemáticas</h3>
+        <a href="matematica.html"><button>Ver</button></a>
+    </article>
+    
+    <article class="tarjeta" data-categoria="Academicos">
+        <img src="Imagenes\oratoria.webp" alt="Club de oratoria">
+        <h3>Club de oratoria</h3>
+        <a href="oratoria.html"><button>Ver</button></a>
+    </article>
+    
+    <article class="tarjeta" data-categoria="Tecnologia">
+        <img src="Imagenes/Imagen programacion.avif" alt="Club de programación">
+        <h3>Club de programación</h3>
+        <a href="programacion.html"><button>Ver</button></a>
+    </article>
+
+    <article class="tarjeta" data-categoria="Tecnologia">
+        <img src="Imagenes\robotica.jpg" alt="Club de robótica">
+        <h3>Club de robótica</h3>
+        <a href="robotica.html"><button>Ver</button></a>
+    </article>
+    
+    <article class="tarjeta" data-categoria="Cultura">
+        <img src="Imagenes/Imagen lectura.jpg" alt="Club de lectura">
+        <h3>Club de lectura</h3>
+        <a href="lectura.html"><button>Ver</button></a>
+    </article>
+    
+    <article class="tarjeta" data-categoria="Cultura"> 
+        <img src="Imagenes\teatro.jpg" alt="Club de teatro">
+        <h3>Club de Teatro</h3>
+        <a href="teatro.html"><button>Ver</button></a>
+    </article>
+    
+</section>
+
+</div>
+<script>
+
+let categoriaActual = 'todos';
+
+function normalizar(texto) {
+    return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+}
+
+function seleccionarCategoria(categoria, event) {
+    if (event) event.preventDefault();
+    categoriaActual = categoria;
+
+    const enlaces = document.querySelectorAll('#listaCategorias a');
+    enlaces.forEach(link => link.style.color = '#555');
+    if (event && event.target) {
+        event.target.style.color = '#b3001b';
+    }
+
+    const tituloSeccion = document.querySelector('.Contenedor-principal section > h2');
+    if (categoria === 'todos') {
+        tituloSeccion.textContent = 'Todos los clubes';
+    } else {
+        let nombreCategoria = categoria;
+        if (categoria === 'Academicos') nombreCategoria = 'Académicos';
+        if (categoria === 'Tecnologia') nombreCategoria = 'Tecnología';
+        tituloSeccion.textContent = 'Clubes de ' + nombreCategoria;
+    }
+
+    filtrarCombinado();
+}
+
+function filtrarCombinado() {
+    const textoBuscador = normalizar(document.getElementById('inputBuscador').value.trim());
+    const tarjetas = document.querySelectorAll('.tarjeta');
+
+    tarjetas.forEach(tarjeta => {
+        const catTarjeta = tarjeta.getAttribute('data-categoria');
+        const nombreClub = normalizar(tarjeta.querySelector('h3').textContent);
+
+        const coincideCategoria = (categoriaActual === 'todos' || catTarjeta === categoriaActual);
+        
+        const coincideTexto = nombreClub.includes(textoBuscador);
+
+        if (coincideCategoria && coincideTexto) {
+            tarjeta.style.display = 'flex';
+        } else {
+            tarjeta.style.display = 'none';
+        }
+    });
+}
+</script>
+<footer class="pie-pagina">
+
+    <div class="contenido-pie">
+
+        <div class="seccion-pie">
+            <h4>USMP CLUB</h4>
+            <p>
+                Un espacio para descubrir, participar
+                y conectar con los clubes y actividades
+                universitarias.
+            </p>
+        </div>
+
+        <div class="seccion-pie">
+            <h4>Enlaces rápidos</h4>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="clubes.html">Clubes</a></li>
+                <li><a href="eventos.html">Eventos</a></li>
+                <li><a href="miperfil1.html">Mi perfil</a></li>
+            </ul>
+        </div>
+
+        <div class="seccion-pie">
+            <h4>Comunidad</h4>
+            <p>
+                Explora tus intereses, conoce nuevos
+                compañeros y participa en las actividades
+                de USMP Club.
+            </p>
+        </div>
+
+    </div>
+
+    <div class="derechos-pie">
+        © 2026 USMP Club. Proyecto académico.
+        Todos los derechos reservados.
+    </div>
+
+</footer>
+</body>
+</html>

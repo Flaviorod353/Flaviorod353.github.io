@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesión - USMP Club</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="pagina-login">
+
+    <div class="contenedor-login">
+
+        <div class="tarjeta-login">
+
+            <div class="encabezado-login">
+                <img src="Imagenes/LOGOUSMOP.webp" alt="Logo USMP">
+                <h2>USMP CLUB</h2>
+                <p>Bienvenido nuevamente</p>
+            </div>
+
+            <h3>Iniciar sesión</h3>
+
+            <form id="formLogin">
+
+                <div class="campo-login">
+                    <label for="correoLogin">Correo o código de alumno</label>
+                    <input
+                        type="text"
+                        id="correoLogin"
+                        placeholder="Ingresa tu correo o código"
+                        required>
+                </div>
+
+                <div class="campo-login">
+                    <label for="passwordLogin">Contraseña</label>
+                    <input
+                        type="password"
+                        id="passwordLogin"
+                        placeholder="Ingresa tu contraseña"
+                        required>
+                </div>
+
+                <button type="submit" class="boton-login">
+                    Iniciar sesión
+                </button>
+
+            </form>
+
+            <p class="texto-registro">
+                ¿No tienes cuenta?
+                <a href="crear-cuenta.html">Crear cuenta</a>
+            </p>
+
+            <a href="index.html" class="enlace-inicio">
+                Volver al inicio
+            </a>
+
+        </div>
+
+    </div>
+
+    <script>
+    document.getElementById("formLogin").addEventListener("submit", function(e) {
+
+        e.preventDefault();
+
+        const correo = document.getElementById("correoLogin").value.trim();
+        const password = document.getElementById("passwordLogin").value;
+
+      
+        if (
+            correo === "duliartel@usmp.pe" &&
+            password === "denzel123"
+        ) {
+
+            localStorage.setItem("sesion_activa", "true");
+            localStorage.setItem("usuario_correo", correo);
+
+            alert("¡Bienvenido nuevamente a USMP Club!");
+
+            window.location.href = "miperfil1.html";
+
+        } else {
+
+            alert("Correo o contraseña incorrectos.");
+
+        }
+
+    });
+    </script>
+    <footer class="pie-pagina">
+
+    <div class="contenido-pie">
+
+        <div class="seccion-pie">
+            <h4>USMP CLUB</h4>
+            <p>
+                Un espacio para descubrir, participar
+                y conectar con los clubes y actividades
+                universitarias.
+            </p>
+        </div>
+
+        <div class="seccion-pie">
+            <h4>Enlaces rápidos</h4>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="clubes.html">Clubes</a></li>
+                <li><a href="eventos.html">Eventos</a></li>
+                <li><a href="miperfil1.html">Mi perfil</a></li>
+            </ul>
+        </div>
+
+        <div class="seccion-pie">
+            <h4>Comunidad</h4>
+            <p>
+                Explora tus intereses, conoce nuevos
+                compañeros y participa en las actividades
+                de USMP Club.
+            </p>
+        </div>
+
+    </div>
+
+    <div class="derechos-pie">
+        © 2026 USMP Club. Proyecto académico.
+        Todos los derechos reservados.
+    </div>
+
+</footer>
+
+</body>
+</html>

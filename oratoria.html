@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USMP CLUB - Club de Oratoria</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header style="display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; border-bottom: 2px solid #eaeaea; background-color: white;">
+        
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <img src="Imagenes/LOGOUSMOP.webp" alt="Logo USMP" style="width: 45px; height: 45px; object-fit: contain;">
+            <span style="font-size: 22px; font-weight: 500; color: #333;">Usmp Club</span>
+        </div>
+
+        <nav>
+            <ul style="display: flex; list-style: none; margin: 0; padding: 0; gap: 25px;">
+                <li><a href="index.html" style="color: #495057; text-decoration: none;">Inicio</a></li>
+                <li><a href="clubes.html" style="color: #495057; text-decoration: none;">Clubes</a></li>
+                <li><a href="eventos.html" style="color: #495057; text-decoration: none;">Eventos</a></li>
+                <li><a href="miperfil1.html" style="color: #495057; text-decoration: none;">Mi perfil</a></li>
+            </ul>
+        </nav>
+
+    </header>
+
+    <main class="seccion-detalle-club">
+        
+        <div class="bloque-header-info">
+            <div class="bloque-imagen-principal">
+                <img src="Imagenes/oratoria.webp" alt="Club de oratoria">
+            </div>
+            
+            <div class="bloque-datos-principales">
+                <h1 class="titulo-club-detalle">Club de oratoria</h1>
+                <span class="badge-categoria">Académicos</span>
+                
+                <div class="club-miembros">
+                    <svg xmlns="http://w3.org" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 5px;">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    30 miembros
+                </div>
+                <div class="caja-descripcion-borde">
+                <p class="club-descripcion">
+                    Si te gustaría expresarte mejor o perder el miedo a hablar en público. <br>
+                    Estás en el lugar adecuado. ¡Únete!
+                </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bloque-eventos-contenedor">
+            
+            <div class="caja-evento-individual">
+                <h3 class="subtitulo-evento">Próximo taller</h3>
+                <div class="evento-info-flex">
+                    <svg xmlns="http://w3.org" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="min-width: 24px;">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                    <div>
+                        <p class="evento-fecha">Miércoles 2 de Septiembre</p>
+                        <p class="evento-hora">5:00 pm - 6:30 pm</p>
+                        <p class="evento-lugar">Aula 101</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="caja-evento-individual">
+                <h3 class="subtitulo-evento">Próximo taller</h3>
+                <div class="evento-info-flex">
+                    <svg xmlns="http://w3.org" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="min-width: 24px;">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                    <div>
+                        <p class="evento-fecha">Miércoles 7 de Septiembre</p>
+                        <p class="evento-hora">8:00 pm - 9:30 pm</p>
+                        <p class="evento-lugar">Aula 103</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+        <div class="bloque-botones-acciones">
+            <button class="btn-unirme">Unirme</button>
+            <button class="btn-contactar">Contactar</button>
+        </div>
+
+    </main>
+<script>
+ document.addEventListener("DOMContentLoaded", function() {
+    const claveClub = "oratoria"; 
+    const btnUnirme = document.querySelector('.btn-unirme');
+
+    if (!btnUnirme) return;
+
+    
+    actualizarEstadoBoton(btnUnirme, localStorage.getItem('unido_' + claveClub) === 'true');
+
+    btnUnirme.addEventListener('click', function() {
+        const estaUnido = localStorage.getItem('unido_' + claveClub) === 'true';
+
+        if (!estaUnido) {
+            localStorage.setItem('unido_' + claveClub, 'true');
+            actualizarEstadoBoton(btnUnirme, true);
+            alert('¡Te has unido al club con éxito!');
+        } else { 
+            localStorage.removeItem('unido_' + claveClub);
+            actualizarEstadoBoton(btnUnirme, false);
+            alert('Has salido del club.');
+        }
+    });
+});
+
+function actualizarEstadoBoton(boton, unido) {
+    if (unido) {
+        boton.textContent = '✓ Ya estás unido (Salir)';
+        boton.style.backgroundColor = '#28a745';
+        boton.style.color = 'white';
+        boton.style.borderColor = '#28a745';
+    } else {
+        boton.textContent = 'Unirme';
+        boton.style.backgroundColor = '#b3001b';
+        boton.style.color = 'white';
+        boton.style.borderColor = '#b3001b';
+    }
+}
+</script>
+<footer class="pie-pagina">
+
+    <div class="contenido-pie">
+
+        <div class="seccion-pie">
+            <h4>USMP CLUB</h4>
+            <p>
+                Un espacio para descubrir, participar
+                y conectar con los clubes y actividades
+                universitarias.
+            </p>
+        </div>
+
+        <div class="seccion-pie">
+            <h4>Enlaces rápidos</h4>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="clubes.html">Clubes</a></li>
+                <li><a href="eventos.html">Eventos</a></li>
+                <li><a href="miperfil1.html">Mi perfil</a></li>
+            </ul>
+        </div>
+
+        <div class="seccion-pie">
+            <h4>Comunidad</h4>
+            <p>
+                Explora tus intereses, conoce nuevos
+                compañeros y participa en las actividades
+                de USMP Club.
+            </p>
+        </div>
+
+    </div>
+
+    <div class="derechos-pie">
+        © 2026 USMP Club. Proyecto académico.
+        Todos los derechos reservados.
+    </div>
+
+</footer>
+</body>
+</html>

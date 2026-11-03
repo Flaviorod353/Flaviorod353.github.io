@@ -1,0 +1,241 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>USMP CLUB - Mi Perfil</title>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.2/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  <script src="https://code.jquery.com/ui/1.14.2/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#tabs" ).tabs();
+  } );
+  </script>
+</head>
+<body>
+     <header style="display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; border-bottom: 2px solid #eaeaea; background-color: white;">
+        
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <img src="Imagenes/LOGOUSMOP.webp" alt="Logo USMP" style="width: 45px; height: 45px; object-fit: contain;">
+            <span style="font-size: 22px; font-weight: 500; color: #333;">Usmp Club</span>
+        </div>
+
+        <nav>
+            <ul style="display: flex; list-style: none; margin: 0; padding: 0; gap: 25px;">
+                <li><a href="index.html" style="color: #495057; text-decoration: none;">Inicio</a></li>
+                <li><a href="clubes.html" style="color: #495057; text-decoration: none;">Clubes</a></li>
+                <li><a href="eventos.html" style="color: #495057; text-decoration: none;">Eventos</a></li>
+                <li><a href="miperfil1.html" style="color: #495057; text-decoration: none; font-weight: bold;">Mi perfil</a></li>
+
+               
+                <li>
+                    <button onclick="cerrarSesion()"
+                    style="background-color: #dc3545; color: white; border: none; padding: 8px 14px; border-radius: 6px; cursor: pointer;">
+                        Cerrar sesión
+                    </button>
+                </li>
+            </ul>
+        </nav>
+
+    </header>
+
+    <main class="seccion-detalle-club">
+        
+        <div class="bloque-header-info">
+            <div class="bloque-imagen-principal">
+                <img src="Imagenes/denzel.jpg" alt="Denzel Uliarte">
+            </div>
+            
+            <div class="bloque-datos-principales">
+                <h1 class="titulo-Denzel-Uliarte">Denzel Uliarte</h1>
+                <span class="badge-categoria"><h3 id="textoFacultadPerfil">Ingeniería de Computación y Sistemas</h3></span>
+            </div>
+        </div>
+
+        <div id="tabs">
+          <ul>
+            <li><a href="#tabs-1">Mis clubes</a></li>
+            <li><a href="#tabs-2">Eventos inscritos</a></li>
+            <li><a href="#tabs-3">Configuración</a></li>
+          </ul>
+        
+          <div id="tabs-1" class="contenedor-mis-clubes" style="display: flex; flex-wrap: wrap; gap: 20px;">
+          
+        </div>
+          <div id="tabs-2">
+            <p>No tienes eventos inscritos actualmente.</p>
+          </div>
+            
+          <div id="tabs-3">
+            <h3 class="titulo-configuracion">Configuración de la cuenta</h3>
+            <p class="subtitulo-configuracion">Actualiza tus datos personales y preferencias de la plataforma.</p>
+            
+            <form class="form-configuracion" id="formConfig">
+                <div class="grupo-campo">
+                    <label>Correo institucional:</label>
+                    <input type="email" id="inputCorreo" class="input-configuracion" value="duliartel@usmp.pe">
+                </div>
+
+                <div class="grupo-campo">
+                    <label>Facultad / Escuela:</label>
+                    <select id="selectFacultad" class="input-configuracion" style="padding: 8px; width: 100%; border-radius: 4px; border: 1px solid #ccc;">
+                        <option value="Ingeniería de Computación y Sistemas">Ingeniería de Computación y Sistemas</option>
+                        <option value="Ingeniería Industrial">Ingeniería Industrial</option>
+                        <option value="Ingeniería Civil">Ingeniería Civil</option>
+                        <option value="Arquitectura">Arquitectura</option>
+                    </select>
+                </div>
+
+                <div class="grupo-notificaciones">
+                    <span class="titulo-notif">Notificaciones:</span>
+                    <label>
+                        <input type="checkbox" id="checkTalleres" checked> Recibir alertas de próximos talleres
+                    </label>
+                    <label>
+                        <input type="checkbox" id="checkTorneos" checked> Avisos de torneos y eventos deportivos
+                    </label>
+                </div>
+
+                <button type="button" class="btn-guardar-config" onclick="guardarConfiguracion()">Guardar cambios</button>
+            </form>
+         </div>
+         
+        </div>
+
+    </main>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        
+        const contenedorClubes = document.getElementById('tabs-1');
+
+        const todosLosClubes = [
+            { id: "futbol", nombre: "Club de fútbol", imagen: "Imagenes/fut.jpg", enlace: "futbol.html", categoria: "Deportes" },
+            { id: "voley", nombre: "Club de vóley", imagen: "Imagenes/voley.jpg", enlace: "voley.html", categoria: "Deportes" },
+            { id: "matematica", nombre: "Club de matemáticas", imagen: "Imagenes/Imagen matematica.jpg", enlace: "matematica.html", categoria: "Academicos" },
+            { id: "oratoria", nombre: "Club de oratoria", imagen: "Imagenes/oratoria.webp", enlace: "oratoria.html", categoria: "Academicos" },
+            { id: "programacion", nombre: "Club de programación", imagen: "Imagenes/Imagen programacion.avif", enlace: "programacion.html", categoria: "Tecnologia" },
+            { id: "robotica", nombre: "Club de robótica", imagen: "Imagenes/robotica.jpg", enlace: "robotica.html", categoria: "Tecnologia" },
+            { id: "lectura", nombre: "Club de lectura", imagen: "Imagenes/Imagen lectura.jpg", enlace: "lectura.html", categoria: "Cultura" },
+            { id: "teatro", nombre: "Club de teatro", imagen: "Imagenes/teatro.jpg", enlace: "teatro.html", categoria: "Cultura" }
+        ];
+
+        let htmlContenido = "";
+        let clubesUnidosCount = 0;
+
+        todosLosClubes.forEach(club => {
+            if (localStorage.getItem('unido_' + club.id) === 'true') {
+                clubesUnidosCount++;
+                htmlContenido += `
+                    <article class="tarjeta" data-categoria="${club.categoria}" style="display: flex; flex-direction: column; align-items: center; padding: 15px; border: 1px solid #ddd; border-radius: 8px; width: 220px; background: white;">
+                        <img src="${club.imagen}" alt="${club.nombre}" style="width: 100%; height: 130px; object-fit: cover; border-radius: 6px;">
+                        <h3 style="font-size: 16px; margin: 10px 0; text-align: center;">${club.nombre}</h3>
+                        <div style="display: flex; gap: 8px; width: 100%; justify-content: center;">
+                            <a href="${club.enlace}"><button style="padding: 6px 12px; cursor: pointer;">Ver</button></a>
+                            <button onclick="salirDelClub('${club.id}')" style="background-color: #dc3545; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer;">Salir</button>
+                        </div>
+                    </article>
+                `;
+            }
+        });
+
+        if (clubesUnidosCount === 0) {
+            htmlContenido = `<p style="color: #666; font-style: italic;">Aún no te has unido a ningún club. Explora la sección de clubes para unirte.</p>`;
+        }
+
+        contenedorClubes.innerHTML = htmlContenido;
+
+        const correoGuardado = localStorage.getItem('usuario_correo');
+        const facultadGuardada = localStorage.getItem('usuario_facultad');
+        const talleresGuardado = localStorage.getItem('usuario_talleres');
+        const torneosGuardado = localStorage.getItem('usuario_torneos');
+
+        if (correoGuardado) {
+            document.getElementById('inputCorreo').value = correoGuardado;
+        }
+        
+        if (facultadGuardada) {
+            document.getElementById('selectFacultad').value = facultadGuardada;
+            document.getElementById('textoFacultadPerfil').textContent = facultadGuardada;
+        }
+
+        if (talleresGuardado !== null) {
+            document.getElementById('checkTalleres').checked = (talleresGuardado === 'true');
+        }
+        if (torneosGuardado !== null) {
+            document.getElementById('checkTorneos').checked = (torneosGuardado === 'true');
+        }
+    });
+
+    function salirDelClub(idClub) {
+        localStorage.removeItem('unido_' + idClub);
+        alert('Has salido del club exitosamente.');
+        location.reload();
+    }
+
+    function guardarConfiguracion() {
+        const nuevoCorreo = document.getElementById('inputCorreo').value;
+        const nuevaFacultad = document.getElementById('selectFacultad').value;
+        const aceptaTalleres = document.getElementById('checkTalleres').checked;
+        const aceptaTorneos = document.getElementById('checkTorneos').checked;
+
+        localStorage.setItem('usuario_correo', nuevoCorreo);
+        localStorage.setItem('usuario_facultad', nuevaFacultad);
+        localStorage.setItem('usuario_talleres', aceptaTalleres);
+        localStorage.setItem('usuario_torneos', aceptaTorneos);
+
+        document.getElementById('textoFacultadPerfil').textContent = nuevaFacultad;
+
+        alert('¡Cambios guardados con éxito!');
+    }
+
+    function cerrarSesion() {
+        localStorage.removeItem('sesion_activa');
+        window.location.href = "iniciar-sesion.html";
+    }
+    </script>
+    <footer class="pie-pagina">
+
+    <div class="contenido-pie">
+
+        <div class="seccion-pie">
+            <h4>USMP CLUB</h4>
+            <p>
+                Un espacio para descubrir, participar
+                y conectar con los clubes y actividades
+                universitarias.
+            </p>
+        </div>
+
+        <div class="seccion-pie">
+            <h4>Enlaces rápidos</h4>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="clubes.html">Clubes</a></li>
+                <li><a href="eventos.html">Eventos</a></li>
+                <li><a href="miperfil1.html">Mi perfil</a></li>
+            </ul>
+        </div>
+
+        <div class="seccion-pie">
+            <h4>Comunidad</h4>
+            <p>
+                Explora tus intereses, conoce nuevos
+                compañeros y participa en las actividades
+                de USMP Club.
+            </p>
+        </div>
+
+    </div>
+
+    <div class="derechos-pie">
+        © 2026 USMP Club. Proyecto académico.
+        Todos los derechos reservados.
+    </div>
+
+</footer>
+</body>
+</html>
